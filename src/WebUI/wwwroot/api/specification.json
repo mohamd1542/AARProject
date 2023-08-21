@@ -1,0 +1,3442 @@
+{
+  "x-generator": "NSwag v13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "AARProject API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/Comment": {
+      "get": {
+        "tags": [
+          "Comment"
+        ],
+        "operationId": "Comment_Get",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCommentQueryVM"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Comment"
+        ],
+        "operationId": "Comment_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCommentCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Comment/{id}": {
+      "put": {
+        "tags": [
+          "Comment"
+        ],
+        "operationId": "Comment_Update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCommentCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Comment"
+        ],
+        "operationId": "Comment_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Point": {
+      "get": {
+        "tags": [
+          "Point"
+        ],
+        "operationId": "Point_Get",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPointQueryVM"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Point"
+        ],
+        "operationId": "Point_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePointCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Point/{id}": {
+      "put": {
+        "tags": [
+          "Point"
+        ],
+        "operationId": "Point_Update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePointCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Point"
+        ],
+        "operationId": "Point_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/PointTemplate": {
+      "get": {
+        "tags": [
+          "PointTemplate"
+        ],
+        "operationId": "PointTemplate_Get",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPointTemplateQueryVM"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "PointTemplate"
+        ],
+        "operationId": "PointTemplate_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePointTemplateCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/PointTemplate/{id}": {
+      "put": {
+        "tags": [
+          "PointTemplate"
+        ],
+        "operationId": "PointTemplate_Update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePointTemplateCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "PointTemplate"
+        ],
+        "operationId": "PointTemplate_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Role": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "operationId": "Role_Get",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetRoleQueryVM"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Role"
+        ],
+        "operationId": "Role_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRoleCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Role/{id}": {
+      "put": {
+        "tags": [
+          "Role"
+        ],
+        "operationId": "Role_Update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRoleCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Role"
+        ],
+        "operationId": "Role_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/RoleSource": {
+      "post": {
+        "tags": [
+          "RoleSource"
+        ],
+        "operationId": "RoleSource_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRoleSourceCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/RoleSource/{id}": {
+      "delete": {
+        "tags": [
+          "RoleSource"
+        ],
+        "operationId": "RoleSource_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/RoleTemplate": {
+      "post": {
+        "tags": [
+          "RoleTemplate"
+        ],
+        "operationId": "RoleTemplate_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRoleTemplateCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/RoleTemplate/{id}": {
+      "delete": {
+        "tags": [
+          "RoleTemplate"
+        ],
+        "operationId": "RoleTemplate_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Source": {
+      "get": {
+        "tags": [
+          "Source"
+        ],
+        "operationId": "Source_Get",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSourceQueryVM"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Source"
+        ],
+        "operationId": "Source_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSourceCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Source/{id}": {
+      "put": {
+        "tags": [
+          "Source"
+        ],
+        "operationId": "Source_Update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSourceCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Source"
+        ],
+        "operationId": "Source_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Template": {
+      "get": {
+        "tags": [
+          "Template"
+        ],
+        "operationId": "Template_Get",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTemplateQueryVM"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Template"
+        ],
+        "operationId": "Template_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTemplateCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Template/{id}": {
+      "put": {
+        "tags": [
+          "Template"
+        ],
+        "operationId": "Template_Update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTemplateCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Template"
+        ],
+        "operationId": "Template_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UploadedFile": {
+      "get": {
+        "tags": [
+          "UploadedFile"
+        ],
+        "operationId": "UploadedFile_Get",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetFileQueryVM"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "UploadedFile"
+        ],
+        "operationId": "UploadedFile_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFileCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UploadedFile/{id}": {
+      "put": {
+        "tags": [
+          "UploadedFile"
+        ],
+        "operationId": "UploadedFile_Update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFileCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "UploadedFile"
+        ],
+        "operationId": "UploadedFile_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/User": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "User_Get",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserQueryVM"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "User_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/User/{id}": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "User_Update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "User_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UserRequestTemplate": {
+      "get": {
+        "tags": [
+          "UserRequestTemplate"
+        ],
+        "operationId": "UserRequestTemplate_Get",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserRequestTemplateQueryVM"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "UserRequestTemplate"
+        ],
+        "operationId": "UserRequestTemplate_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserRequestTemplateCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UserRequestTemplate/{id}": {
+      "put": {
+        "tags": [
+          "UserRequestTemplate"
+        ],
+        "operationId": "UserRequestTemplate_Update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserRequestTemplateCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "UserRequestTemplate"
+        ],
+        "operationId": "UserRequestTemplate_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UserRole": {
+      "post": {
+        "tags": [
+          "UserRole"
+        ],
+        "operationId": "UserRole_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserRoleCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UserRole/{id}": {
+      "delete": {
+        "tags": [
+          "UserRole"
+        ],
+        "operationId": "UserRole_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UserRpointTemplate": {
+      "get": {
+        "tags": [
+          "UserRpointTemplate"
+        ],
+        "operationId": "UserRpointTemplate_Get",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserRpointTemplateQueryVM"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "UserRpointTemplate"
+        ],
+        "operationId": "UserRpointTemplate_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserRpointTemplateCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UserRpointTemplate/{id}": {
+      "put": {
+        "tags": [
+          "UserRpointTemplate"
+        ],
+        "operationId": "UserRpointTemplate_Update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserRpointTemplateCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "UserRpointTemplate"
+        ],
+        "operationId": "UserRpointTemplate_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GetCommentQueryVM": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "commentDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "inverseCommentNavigation": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/CommentDto"
+            }
+          }
+        }
+      },
+      "CommentDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "commentDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "inverseCommentNavigation": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/CommentDto"
+            }
+          }
+        }
+      },
+      "CreateCommentCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "text",
+          "commentDate"
+        ],
+        "properties": {
+          "userId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "userRpointTemplateId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "commentDate": {
+            "type": "string",
+            "format": "date-time",
+            "minLength": 1,
+            "nullable": false
+          },
+          "inverseCommentNavigation": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/CommentDto"
+            }
+          }
+        }
+      },
+      "UpdateCommentCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "text",
+          "commentDate"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "commentDate": {
+            "type": "string",
+            "format": "date-time",
+            "minLength": 1,
+            "nullable": false
+          },
+          "inverseCommentNavigation": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/CommentDto"
+            }
+          }
+        }
+      },
+      "GetPointQueryVM": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "pointName": {
+            "type": "string"
+          },
+          "pointTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/PointTemplateDto"
+            }
+          },
+          "userRequestTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRequestTemplateDto"
+            }
+          }
+        }
+      },
+      "PointTemplateDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "seriesNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userRpointTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRpointTemplateDto"
+            }
+          }
+        }
+      },
+      "UserRpointTemplateDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "requestStatus": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "comments": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/CommentDto"
+            }
+          }
+        }
+      },
+      "Status": {
+        "type": "integer",
+        "description": "",
+        "x-enumNames": [
+          "Unacceptable",
+          "Acceptable",
+          "UnderProcessing"
+        ],
+        "enum": [
+          0,
+          1,
+          2
+        ]
+      },
+      "UserRequestTemplateDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "file": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "requestStatus": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "uploadedFiles": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UploadedFileDto"
+            }
+          },
+          "userRpointTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRpointTemplateDto"
+            }
+          }
+        }
+      },
+      "UploadedFileDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "fileName": {
+            "type": "string"
+          }
+        }
+      },
+      "CreatePointCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "pointName"
+        ],
+        "properties": {
+          "userId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "pointName": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "pointTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/PointTemplateDto"
+            }
+          },
+          "userRequestTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRequestTemplateDto"
+            }
+          }
+        }
+      },
+      "UpdatePointCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "pointName"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "pointName": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "pointTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/PointTemplateDto"
+            }
+          },
+          "userRequestTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRequestTemplateDto"
+            }
+          }
+        }
+      },
+      "GetPointTemplateQueryVM": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "seriesNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userRpointTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRpointTemplateDto"
+            }
+          }
+        }
+      },
+      "CreatePointTemplateCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "seriesNumber"
+        ],
+        "properties": {
+          "templateId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "pointId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "seriesNumber": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0.0,
+            "minLength": 1,
+            "nullable": false
+          },
+          "userRpointTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRpointTemplateDto"
+            }
+          }
+        }
+      },
+      "UpdatePointTemplateCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "seriesNumber"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "seriesNumber": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0.0,
+            "minLength": 1,
+            "nullable": false
+          },
+          "userRpointTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRpointTemplateDto"
+            }
+          }
+        }
+      },
+      "GetRoleQueryVM": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "roleName": {
+            "type": "string"
+          },
+          "roleSources": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RoleSource"
+            }
+          },
+          "roleTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RoleTemplate"
+            }
+          },
+          "userRoles": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRole"
+            }
+          }
+        }
+      },
+      "RoleSource": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseAuditableEntity"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "roleId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "sourceId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "role": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Role"
+                  }
+                ]
+              },
+              "source": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Source"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "Role": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseAuditableEntity"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "roleName": {
+                "type": "string"
+              },
+              "roleSources": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/RoleSource"
+                }
+              },
+              "roleTemplates": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/RoleTemplate"
+                }
+              },
+              "userRoles": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/UserRole"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "RoleTemplate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseAuditableEntity"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "roleId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "templateId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "role": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Role"
+                  }
+                ]
+              },
+              "template": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Template"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "Template": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseAuditableEntity"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "templateName": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "coverImage": {
+                "type": "string"
+              },
+              "pointTemplates": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/PointTemplate"
+                }
+              },
+              "roleTemplates": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/RoleTemplate"
+                }
+              },
+              "userRequestTemplates": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/UserRequestTemplate"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "PointTemplate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseAuditableEntity"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "seriesNumber": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "templateId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "pointId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "point": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Point"
+                  }
+                ]
+              },
+              "template": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Template"
+                  }
+                ]
+              },
+              "userRpointTemplates": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/UserRpointTemplate"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "Point": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseAuditableEntity"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "userId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "pointName": {
+                "type": "string"
+              },
+              "pointTemplates": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/PointTemplate"
+                }
+              },
+              "userRequestTemplates": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/UserRequestTemplate"
+                }
+              },
+              "user": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/User"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "UserRequestTemplate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseAuditableEntity"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "file": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "userId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "templateId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "pointId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "sourceId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "requestStatus": {
+                "$ref": "#/components/schemas/Status"
+              },
+              "user": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/User"
+                  }
+                ]
+              },
+              "template": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Template"
+                  }
+                ]
+              },
+              "point": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Point"
+                  }
+                ]
+              },
+              "source": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Source"
+                  }
+                ]
+              },
+              "uploadedFiles": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/UploadedFile"
+                }
+              },
+              "userRpointTemplates": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/UserRpointTemplate"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "User": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseAuditableEntity"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "firstName": {
+                "type": "string"
+              },
+              "lastName": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "points": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/Point"
+                }
+              },
+              "comments": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/Comment"
+                }
+              },
+              "userRequestTemplates": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/UserRequestTemplate"
+                }
+              },
+              "userRoles": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/UserRole"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "Comment": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseAuditableEntity"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "commentDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "userId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "commentId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "userRpointTemplateId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "user": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/User"
+                  }
+                ]
+              },
+              "commentNavigation": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Comment"
+                  }
+                ]
+              },
+              "userRpointTemplate": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/UserRpointTemplate"
+                  }
+                ]
+              },
+              "inverseCommentNavigation": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/Comment"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "UserRpointTemplate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseAuditableEntity"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "created": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "userRequestTemplateId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "pointTemplateId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "requestStatus": {
+                "$ref": "#/components/schemas/Status"
+              },
+              "pointTemplate": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/PointTemplate"
+                  }
+                ]
+              },
+              "userRequestTemplate": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/UserRequestTemplate"
+                  }
+                ]
+              },
+              "comments": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/Comment"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "BaseAuditableEntity": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntity"
+          },
+          {
+            "type": "object",
+            "x-abstract": true,
+            "additionalProperties": false,
+            "properties": {
+              "created": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "createdBy": {
+                "type": "string",
+                "nullable": true
+              },
+              "lastModified": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "lastModifiedBy": {
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        ]
+      },
+      "BaseEntity": {
+        "type": "object",
+        "x-abstract": true,
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "domainEvents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BaseEvent"
+            }
+          }
+        }
+      },
+      "BaseEvent": {
+        "type": "object",
+        "x-abstract": true,
+        "additionalProperties": false
+      },
+      "UserRole": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseAuditableEntity"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "userId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "roleId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "role": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Role"
+                  }
+                ]
+              },
+              "user": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/User"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "Source": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseAuditableEntity"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "sourceName": {
+                "type": "string"
+              },
+              "roleSources": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/RoleSource"
+                }
+              },
+              "userRequestTemplates": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/UserRequestTemplate"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "UploadedFile": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseAuditableEntity"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "fileName": {
+                "type": "string"
+              },
+              "userRequestTemplateId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "userRequestTemplate": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/UserRequestTemplate"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "CreateRoleCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "roleName"
+        ],
+        "properties": {
+          "roleName": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "roleSources": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RoleSource"
+            }
+          },
+          "roleTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RoleTemplate"
+            }
+          },
+          "userRoles": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRole"
+            }
+          }
+        }
+      },
+      "UpdateRoleCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "roleName"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "roleName": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "roleSources": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RoleSource"
+            }
+          },
+          "roleTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RoleTemplate"
+            }
+          },
+          "userRoles": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRole"
+            }
+          }
+        }
+      },
+      "CreateRoleSourceCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "roleId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "sourceId": {
+            "type": "string",
+            "format": "guid"
+          }
+        }
+      },
+      "CreateRoleTemplateCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "roleId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "templateId": {
+            "type": "string",
+            "format": "guid"
+          }
+        }
+      },
+      "GetSourceQueryVM": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "sourceName": {
+            "type": "string"
+          },
+          "roleSources": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RoleSource"
+            }
+          },
+          "userRequestTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRequestTemplateDto"
+            }
+          }
+        }
+      },
+      "CreateSourceCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sourceName"
+        ],
+        "properties": {
+          "sourceName": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "roleSources": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RoleSource"
+            }
+          },
+          "userRequestTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRequestTemplateDto"
+            }
+          }
+        }
+      },
+      "UpdateSourceCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sourceName"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "sourceName": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "roleSources": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RoleSource"
+            }
+          },
+          "userRequestTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRequestTemplateDto"
+            }
+          }
+        }
+      },
+      "GetTemplateQueryVM": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "templateName": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "coverImage": {
+            "type": "string"
+          },
+          "pointTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/PointTemplateDto"
+            }
+          },
+          "roleTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RoleTemplate"
+            }
+          },
+          "userRequestTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRequestTemplateDto"
+            }
+          }
+        }
+      },
+      "CreateTemplateCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "templateName",
+          "description",
+          "coverImage"
+        ],
+        "properties": {
+          "templateName": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "coverImage": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "pointTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/PointTemplateDto"
+            }
+          },
+          "roleTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RoleTemplate"
+            }
+          },
+          "userRequestTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRequestTemplateDto"
+            }
+          }
+        }
+      },
+      "UpdateTemplateCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "templateName",
+          "description",
+          "coverImage"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "templateName": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "coverImage": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "pointTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/PointTemplateDto"
+            }
+          },
+          "roleTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RoleTemplate"
+            }
+          },
+          "userRequestTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRequestTemplateDto"
+            }
+          }
+        }
+      },
+      "GetFileQueryVM": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "fileName": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateFileCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "fileName"
+        ],
+        "properties": {
+          "fileName": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          }
+        }
+      },
+      "UpdateFileCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "fileName"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "fileName": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          }
+        }
+      },
+      "GetUserQueryVM": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "comments": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/CommentDto"
+            }
+          },
+          "userRequestTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRequestTemplateDto"
+            }
+          },
+          "userRoles": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRole"
+            }
+          }
+        }
+      },
+      "CreateUserCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "firstName",
+          "lastName",
+          "email",
+          "password"
+        ],
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "lastName": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "email": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[^@]+@[^@]+$",
+            "nullable": false
+          },
+          "password": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[0-9]",
+            "nullable": false
+          },
+          "comments": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/CommentDto"
+            }
+          },
+          "userRequestTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRequestTemplateDto"
+            }
+          },
+          "userRoles": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRoleDto"
+            }
+          }
+        }
+      },
+      "UserRoleDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "roleId": {
+            "type": "string",
+            "format": "guid"
+          }
+        }
+      },
+      "UpdateUserCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "firstName",
+          "lastName",
+          "email",
+          "password"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "firstName": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "lastName": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "email": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[^@]+@[^@]+$",
+            "nullable": false
+          },
+          "password": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[0-9]",
+            "nullable": false
+          },
+          "comments": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/CommentDto"
+            }
+          },
+          "userRequestTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRequestTemplateDto"
+            }
+          },
+          "userRoles": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRole"
+            }
+          }
+        }
+      },
+      "GetUserRequestTemplateQueryVM": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "file": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "requestStatus": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "uploadedFiles": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UploadedFileDto"
+            }
+          },
+          "userRpointTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRpointTemplateDto"
+            }
+          }
+        }
+      },
+      "CreateUserRequestTemplateCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "file",
+          "description"
+        ],
+        "properties": {
+          "userId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "templateId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "pointId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "sourceId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "file": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 1,
+            "nullable": false
+          },
+          "requestStatus": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "uploadedFiles": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UploadedFileDto"
+            }
+          },
+          "userRpointTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRpointTemplateDto"
+            }
+          }
+        }
+      },
+      "UpdateUserRequestTemplateCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "file",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "file": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 1,
+            "nullable": false
+          },
+          "requestStatus": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "uploadedFiles": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UploadedFileDto"
+            }
+          },
+          "userRpointTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRpointTemplateDto"
+            }
+          }
+        }
+      },
+      "CreateUserRoleCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "roleId": {
+            "type": "string",
+            "format": "guid"
+          }
+        }
+      },
+      "GetUserRpointTemplateQueryVM": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "text": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "requestStatus": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "comments": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/CommentDto"
+            }
+          }
+        }
+      },
+      "CreateUserRpointTemplateCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "text",
+          "created"
+        ],
+        "properties": {
+          "userRequestTemplateId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "pointTemplateId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time",
+            "minLength": 1,
+            "nullable": false
+          },
+          "requestStatus": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "comments": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/CommentDto"
+            }
+          }
+        }
+      },
+      "UpdateUserRpointTemplateCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "text",
+          "created"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time",
+            "minLength": 1,
+            "nullable": false
+          },
+          "requestStatus": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "comments": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/CommentDto"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "JWT": {
+        "type": "apiKey",
+        "description": "Type into the textbox: Bearer {your JWT token}.",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "JWT": []
+    }
+  ]
+}
