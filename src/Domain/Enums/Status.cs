@@ -9,5 +9,5 @@ public enum Status
 {
     Unacceptable = 0,
     Acceptable = 1,
-    UnderProcessing = 2,
+    UnderProcessing = 2
 }
