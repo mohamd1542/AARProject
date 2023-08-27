@@ -16,5 +16,6 @@ public class User : BaseAuditableEntity
     public IList<Point>? Points { get; set; }
     public IList<Comment>? Comments { get; set; }
     public IList<UserRequestTemplate>? UserRequestTemplates { get; set; } 
-    public IList<UserRole>? UserRoles { get; set; } 
+    public IList<UserRole>? UserRoles { get; set; }
+    
 }
