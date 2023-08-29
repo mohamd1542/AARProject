@@ -1,15 +1,3 @@
- <img align="left" width="84" height="84" src="C:\Users\MOHAMED-SALOUM\Desktop" />
- 
- # Clean Architecture Solution Template
-[![Build](https://github.com/jasontaylordev/CleanArchitecture/actions/workflows/dotnet-build.yml/badge.svg)](https://github.com/jasontaylordev/CleanArchitecture/actions/workflows/dotnet-build.yml)
-[![CodeQL](https://github.com/jasontaylordev/CleanArchitecture/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/jasontaylordev/CleanArchitecture/actions/workflows/codeql-analysis.yml)
-[![Nuget](https://img.shields.io/nuget/v/Clean.Architecture.Solution.Template?label=NuGet)](https://www.nuget.org/packages/Clean.Architecture.Solution.Template)
-[![Nuget](https://img.shields.io/nuget/dt/Clean.Architecture.Solution.Template?label=Downloads)](https://www.nuget.org/packages/Clean.Architecture.Solution.Template)
-[![Discord](https://img.shields.io/discord/893301913662148658?label=Discord)](https://discord.gg/p9YtBjfgGe)
-![Twitter Follow](https://img.shields.io/twitter/follow/jasontaylordev?label=Follow&style=social)
-
-The goal of this template is to provide a straightforward and efficient approach to enterprise application development, leveraging the power of Clean Architecture and ASP.NET Core. Using this template, you can effortlessly create a Single Page App (SPA) with Angular and ASP.NET Core, while adhering to the principles of Clean Architecture. Getting started is easy - simply click **Use this template** above or install the **.NET template** (see below for full details).
-
 ## Technologies
 
 * [ASP.NET Core 7](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core)
