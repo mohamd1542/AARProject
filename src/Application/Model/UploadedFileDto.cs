@@ -10,6 +10,7 @@ using AutoMapper;
 namespace AARProject.Application.Model;
 public class UploadedFileDto : IMapFrom<UploadedFile>
 {
+    public Guid UserRequestTemplateId { get; set; }
     public string FileName { get; set; }
 
     public void Mapping(Profile profile)

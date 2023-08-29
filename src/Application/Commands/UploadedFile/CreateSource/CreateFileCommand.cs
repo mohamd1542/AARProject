@@ -11,6 +11,7 @@ using MediatR;
 namespace AARProject.Application.Commands;
 public class CreateFileCommand:IRequest<Guid>,IMapFrom<UploadedFile>
 {
+    public Guid UserRequestTemplateId { get; set; }
     public string FileName { get; set; }
     public void Mapping(Profile profile)
     {
