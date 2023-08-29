@@ -8,6 +8,7 @@ using AARProject.Application.Common.Interfaces;
 using AARProject.Domain.Entities;
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace AARProject.Application.Queries;
 public class GetTemplateQueryHandler : IRequestHandler<GetTemplateQuery, GetTemplateQueryVM>
@@ -21,7 +22,9 @@ public class GetTemplateQueryHandler : IRequestHandler<GetTemplateQuery, GetTemp
     }
     public async Task<GetTemplateQueryVM> Handle(GetTemplateQuery request, CancellationToken cancellationToken)
     {
-        var getTemplate = _context.Templates.FirstOrDefault(x => x.Id == request.Id);
+        var getTemplate = await _context.Templates
+            .Include(x => x.PointTemplates)
+            .ThenInclude(x => x.UserRpointTemplates).FirstOrDefaultAsync(x => x.Id == request.Id);
         if (getTemplate == null)
         {
             throw new NotFoundException(nameof(Template), request.Id);

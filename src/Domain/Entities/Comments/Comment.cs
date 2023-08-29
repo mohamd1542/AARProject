@@ -11,7 +11,6 @@ public class Comment : BaseAuditableEntity
     public string Text { get; set; }
     public DateTime CommentDate { get; set; }
     public Guid UserId { get; set; }
-    public Guid CommentId { get; set; }
     public Guid UserRpointTemplateId { get; set; }
     public virtual User? User { get; set; }
     public virtual Comment? CommentNavigation { get; set; }

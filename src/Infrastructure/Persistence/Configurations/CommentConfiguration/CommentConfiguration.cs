@@ -18,9 +18,9 @@ public class CommentConfiguration : IEntityTypeConfiguration<Comment>
         builder.Property(e => e.Text).HasMaxLength(50);
         builder.Property(e => e.UserRpointTemplateId).HasColumnName("UserRPointTemplateId");
 
-        builder.HasOne(d => d.CommentNavigation).WithMany(p => p.InverseCommentNavigation)
-            .HasForeignKey(d => d.CommentId)
-            .HasConstraintName("FK_Comments_Comments");
+        //builder.HasOne(d => d.CommentNavigation).WithMany(p => p.InverseCommentNavigation)
+        //    .HasForeignKey(d => d.CommentId)
+        //    .HasConstraintName("FK_Comments_Comments");
 
         builder.HasOne(d => d.User).WithMany(p => p.Comments)
             .HasForeignKey(d => d.UserId)

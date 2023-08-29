@@ -8,6 +8,7 @@ using AARProject.Application.Common.Interfaces;
 using AARProject.Domain.Entities;
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace AARProject.Application.Queries;
 public class GetUserRequestTemplateQueryHandler : IRequestHandler<GetUserRequestTemplateQuery, GetUserRequestTemplateQueryVM>
@@ -21,7 +22,10 @@ public class GetUserRequestTemplateQueryHandler : IRequestHandler<GetUserRequest
     }
     public async Task<GetUserRequestTemplateQueryVM> Handle(GetUserRequestTemplateQuery request, CancellationToken cancellationToken)
     {
-        var getUserRequestTemplate = _context.UserRequestTemplates.FirstOrDefault(x => x.Id == request.Id);
+        var getUserRequestTemplate = await _context.UserRequestTemplates
+            .Include(x => x.UserRpointTemplates)
+            .Include(x => x.UploadedFiles)
+            .FirstOrDefaultAsync(x => x.Id == request.Id);
         if (getUserRequestTemplate == null)
         {
             throw new NotFoundException(nameof(UserRequestTemplate), request.Id);
