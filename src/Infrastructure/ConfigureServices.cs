@@ -43,6 +43,7 @@ public static class ConfigureServices
             .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
 
         services.AddTransient<IDateTime, DateTimeService>();
+        services.AddTransient<ITokenService, TokenService>();
         services.AddTransient<IIdentityService, IdentityService>();
 
         services.AddAuthentication()
