@@ -1950,6 +1950,8 @@ export class UploadedFileClient implements IUploadedFileClient {
 }
 
 export interface IUserClient {
+    createUser(authRes: AuthenticatedResponse): Observable<string>;
+    createUser2(auth: LoginModel): Observable<string>;
     get(query: string | undefined): Observable<GetUserQueryVM>;
     create(command: CreateUserCommand): Observable<string>;
     update(id: string, command: UpdateUserCommand): Observable<FileResponse>;
@@ -1967,6 +1969,112 @@ export class UserClient implements IUserClient {
     constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
         this.http = http;
         this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    createUser(authRes: AuthenticatedResponse): Observable<string> {
+        let url_ = this.baseUrl + "/api/User/RefreshToken";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(authRes);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateUser(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateUser(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<string>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<string>;
+        }));
+    }
+
+    protected processCreateUser(response: HttpResponseBase): Observable<string> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+                result200 = resultData200 !== undefined ? resultData200 : <any>null;
+    
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    createUser2(auth: LoginModel): Observable<string> {
+        let url_ = this.baseUrl + "/api/User/Token";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(auth);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateUser2(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateUser2(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<string>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<string>;
+        }));
+    }
+
+    protected processCreateUser2(response: HttpResponseBase): Observable<string> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+                result200 = resultData200 !== undefined ? resultData200 : <any>null;
+    
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
     }
 
     get(query: string | undefined): Observable<GetUserQueryVM> {
@@ -2849,6 +2957,8 @@ export interface IGetCommentQueryVM {
 }
 
 export class CommentDto implements ICommentDto {
+    userId?: string;
+    userRpointTemplateId?: string;
     text?: string;
     commentDate?: Date;
     inverseCommentNavigation?: CommentDto[] | undefined;
@@ -2864,6 +2974,8 @@ export class CommentDto implements ICommentDto {
 
     init(_data?: any) {
         if (_data) {
+            this.userId = _data["userId"];
+            this.userRpointTemplateId = _data["userRpointTemplateId"];
             this.text = _data["text"];
             this.commentDate = _data["commentDate"] ? new Date(_data["commentDate"].toString()) : <any>undefined;
             if (Array.isArray(_data["inverseCommentNavigation"])) {
@@ -2883,6 +2995,8 @@ export class CommentDto implements ICommentDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["userId"] = this.userId;
+        data["userRpointTemplateId"] = this.userRpointTemplateId;
         data["text"] = this.text;
         data["commentDate"] = this.commentDate ? this.commentDate.toISOString() : <any>undefined;
         if (Array.isArray(this.inverseCommentNavigation)) {
@@ -2895,6 +3009,8 @@ export class CommentDto implements ICommentDto {
 }
 
 export interface ICommentDto {
+    userId?: string;
+    userRpointTemplateId?: string;
     text?: string;
     commentDate?: Date;
     inverseCommentNavigation?: CommentDto[] | undefined;
@@ -3185,9 +3301,9 @@ export interface IUserRpointTemplateDto {
 }
 
 export enum Status {
-    Unacceptable = 0,
+    InProcessing = 0,
     Acceptable = 1,
-    UnderProcessing = 2,
+    Unacceptable = 2,
 }
 
 export class UserRequestTemplateDto implements IUserRequestTemplateDto {
@@ -3259,6 +3375,7 @@ export interface IUserRequestTemplateDto {
 }
 
 export class UploadedFileDto implements IUploadedFileDto {
+    userRequestTemplateId?: string;
     fileName?: string;
 
     constructor(data?: IUploadedFileDto) {
@@ -3272,6 +3389,7 @@ export class UploadedFileDto implements IUploadedFileDto {
 
     init(_data?: any) {
         if (_data) {
+            this.userRequestTemplateId = _data["userRequestTemplateId"];
             this.fileName = _data["fileName"];
         }
     }
@@ -3285,12 +3403,14 @@ export class UploadedFileDto implements IUploadedFileDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["userRequestTemplateId"] = this.userRequestTemplateId;
         data["fileName"] = this.fileName;
         return data;
     }
 }
 
 export interface IUploadedFileDto {
+    userRequestTemplateId?: string;
     fileName?: string;
 }
 
@@ -4303,7 +4423,6 @@ export class Comment extends BaseAuditableEntity implements IComment {
     text?: string;
     commentDate?: Date;
     userId?: string;
-    commentId?: string;
     userRpointTemplateId?: string;
     user?: User | undefined;
     commentNavigation?: Comment | undefined;
@@ -4320,7 +4439,6 @@ export class Comment extends BaseAuditableEntity implements IComment {
             this.text = _data["text"];
             this.commentDate = _data["commentDate"] ? new Date(_data["commentDate"].toString()) : <any>undefined;
             this.userId = _data["userId"];
-            this.commentId = _data["commentId"];
             this.userRpointTemplateId = _data["userRpointTemplateId"];
             this.user = _data["user"] ? User.fromJS(_data["user"]) : <any>undefined;
             this.commentNavigation = _data["commentNavigation"] ? Comment.fromJS(_data["commentNavigation"]) : <any>undefined;
@@ -4345,7 +4463,6 @@ export class Comment extends BaseAuditableEntity implements IComment {
         data["text"] = this.text;
         data["commentDate"] = this.commentDate ? this.commentDate.toISOString() : <any>undefined;
         data["userId"] = this.userId;
-        data["commentId"] = this.commentId;
         data["userRpointTemplateId"] = this.userRpointTemplateId;
         data["user"] = this.user ? this.user.toJSON() : <any>undefined;
         data["commentNavigation"] = this.commentNavigation ? this.commentNavigation.toJSON() : <any>undefined;
@@ -4364,7 +4481,6 @@ export interface IComment extends IBaseAuditableEntity {
     text?: string;
     commentDate?: Date;
     userId?: string;
-    commentId?: string;
     userRpointTemplateId?: string;
     user?: User | undefined;
     commentNavigation?: Comment | undefined;
@@ -5317,6 +5433,7 @@ export interface IGetFileQueryVM {
 }
 
 export class CreateFileCommand implements ICreateFileCommand {
+    userRequestTemplateId?: string;
     fileName!: string;
 
     constructor(data?: ICreateFileCommand) {
@@ -5330,6 +5447,7 @@ export class CreateFileCommand implements ICreateFileCommand {
 
     init(_data?: any) {
         if (_data) {
+            this.userRequestTemplateId = _data["userRequestTemplateId"];
             this.fileName = _data["fileName"];
         }
     }
@@ -5343,12 +5461,14 @@ export class CreateFileCommand implements ICreateFileCommand {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["userRequestTemplateId"] = this.userRequestTemplateId;
         data["fileName"] = this.fileName;
         return data;
     }
 }
 
 export interface ICreateFileCommand {
+    userRequestTemplateId?: string;
     fileName: string;
 }
 
@@ -5390,6 +5510,94 @@ export class UpdateFileCommand implements IUpdateFileCommand {
 export interface IUpdateFileCommand {
     id?: string;
     fileName: string;
+}
+
+export class AuthenticatedResponse implements IAuthenticatedResponse {
+    token?: string | undefined;
+    refreshToken?: string | undefined;
+
+    constructor(data?: IAuthenticatedResponse) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.token = _data["token"];
+            this.refreshToken = _data["refreshToken"];
+        }
+    }
+
+    static fromJS(data: any): AuthenticatedResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new AuthenticatedResponse();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["token"] = this.token;
+        data["refreshToken"] = this.refreshToken;
+        return data;
+    }
+}
+
+export interface IAuthenticatedResponse {
+    token?: string | undefined;
+    refreshToken?: string | undefined;
+}
+
+export class LoginModel implements ILoginModel {
+    email?: string | undefined;
+    password?: string | undefined;
+    accessToken?: string | undefined;
+    refresToken?: string | undefined;
+
+    constructor(data?: ILoginModel) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.email = _data["email"];
+            this.password = _data["password"];
+            this.accessToken = _data["accessToken"];
+            this.refresToken = _data["refresToken"];
+        }
+    }
+
+    static fromJS(data: any): LoginModel {
+        data = typeof data === 'object' ? data : {};
+        let result = new LoginModel();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["email"] = this.email;
+        data["password"] = this.password;
+        data["accessToken"] = this.accessToken;
+        data["refresToken"] = this.refresToken;
+        return data;
+    }
+}
+
+export interface ILoginModel {
+    email?: string | undefined;
+    password?: string | undefined;
+    accessToken?: string | undefined;
+    refresToken?: string | undefined;
 }
 
 export class GetUserQueryVM implements IGetUserQueryVM {

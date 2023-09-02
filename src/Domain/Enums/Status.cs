@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +8,10 @@ using System.Threading.Tasks;
 namespace AARProject.Domain.Enums;
 public enum Status
 {
-    Unacceptable = 0,
+    [Description("In Processin")]
+    InProcessing = 0,
+    [Description("Acceptable")]
     Acceptable = 1,
-    UnderProcessing = 2
+    [Description("UnAcceptable")]
+    Unacceptable = 2
 }

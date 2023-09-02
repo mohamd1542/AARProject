@@ -21,7 +21,9 @@ public class CreateUserRequestTemplateCommandHandler : IRequestHandler<CreateUse
     public async Task<Guid> Handle(CreateUserRequestTemplateCommand request, CancellationToken cancellationToken)
     {
         var UserRequestTemplate = _mapper.Map<UserRequestTemplate>(request);
+        //UserRequestTemplate.RequestStatus = Domain.Enums.Status.UnderProcessing
         _context.UserRequestTemplates.Add(UserRequestTemplate);
+
         await _context.SaveChangesAsync(cancellationToken);
         return UserRequestTemplate.Id;
     }
