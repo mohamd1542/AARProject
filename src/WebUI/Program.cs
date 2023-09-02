@@ -1,5 +1,7 @@
+using System.Text;
 using AARProject.Infrastructure.Persistence;
 using HealthChecks.UI.Client;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,22 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddWebUIServices(builder.Configuration);
+
+
+builder.Services.AddAuthentication("Bearer").AddJwtBearer(
+    op =>
+    {
+        op.TokenValidationParameters = new()
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Authontication:Issuer"],
+            ValidAudience = builder.Configuration["Authontication:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Authontication:Secret"])),
+        };
+    });
+
 
 var app = builder.Build();
 
@@ -45,13 +63,18 @@ app.UseSwaggerUi3(settings =>
 });
 
 app.UseRouting();
+
 app.UseCors();
+
+app.UseAuthentication();
+
+app.UseIdentityServer();
+
+app.UseAuthorization();
 
 app.UseEndpoints(endpoints => endpoints.MapHealthChecksUI(set => set.AddCustomStylesheet("wwwroot/api/hc_style.css")));
 
-//app.UseAuthentication();
-//app.UseIdentityServer();
-//app.UseAuthorization();
+
 
 app.MapControllerRoute(
     name: "default",

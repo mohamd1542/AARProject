@@ -28,6 +28,8 @@ public static class ConfigureServices
 
         services.AddHttpContextAccessor();
 
+        services.AddAuthorization();
+
         services.AddHealthChecks()
             .AddDbContextCheck<ApplicationDbContext>();
 
