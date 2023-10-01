@@ -10,9 +10,17 @@ public class PointTemplateController : ApiControllerBase
     [HttpGet]
     public async Task<ActionResult<GetPointTemplateQueryVM>> Get(Guid query)
     {
-        var user = await Mediator.Send(new GetPointTemplateQuery() { Id = query });
-        return Ok(user);
+        var pointTemplate = await Mediator.Send(new GetPointTemplateQuery() { Id = query });
+        return Ok(pointTemplate);
     }
+
+    [HttpGet("PointInTemplate")]
+    public async Task<ActionResult<GetPointInTemplateQueryVM>> GetPointinTemplate(Guid TemplateId)
+    {
+        var pointInTemplate = await Mediator.Send(new GetPointInTemplateQuery() { TemplateId = TemplateId });
+        return Ok(pointInTemplate);
+    }
+
 
     [HttpPost]
     public async Task<ActionResult<Guid>> Create(CreatePointTemplateCommand command)

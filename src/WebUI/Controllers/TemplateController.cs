@@ -14,6 +14,13 @@ public class TemplateController : ApiControllerBase
         return Ok(user);
     }
 
+    [HttpGet("GetListTemplate")]
+    public async Task<ActionResult<GetListOfTemplatesQueryVM>> GetListTemplate()
+    {
+        var listtemplate = await Mediator.Send(new GetListOfTemplatesQuery() { });
+        return Ok(listtemplate);
+    }
+
     [HttpPost]
     public async Task<ActionResult<Guid>> Create(CreateTemplateCommand command)
     {
