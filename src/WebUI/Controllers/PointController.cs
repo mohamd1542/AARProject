@@ -39,5 +39,6 @@ public class PointController : ApiControllerBase
         await Mediator.Send(new DeletePointCommand() { Id = id });
 
         return NoContent();
+
     }
 }
