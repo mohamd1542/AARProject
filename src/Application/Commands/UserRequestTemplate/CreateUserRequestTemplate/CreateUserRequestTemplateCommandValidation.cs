@@ -10,10 +10,6 @@ public class CreateUserRequestTemplateCommandValidation :AbstractValidator<Creat
 {
     public CreateUserRequestTemplateCommandValidation()
     {
-        RuleFor(x => x.File)
-            .NotEmpty().WithMessage("File path is required.");
-
-
         RuleFor(x => x.Description)
           .NotEmpty().WithMessage("Description is required.")
           .MinimumLength(10).WithMessage("Description must be at least 10 characters.")
