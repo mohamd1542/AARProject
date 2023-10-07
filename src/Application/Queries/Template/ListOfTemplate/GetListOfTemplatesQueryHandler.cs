@@ -20,9 +20,9 @@ public class GetListOfTemplatesQueryHandler : IRequestHandler<GetListOfTemplates
 
     public async Task<List<GetListOfTemplatesQueryVM>> Handle(GetListOfTemplatesQuery request, CancellationToken cancellationToken)
     {
-        var x = _context.Templates.Where(x => x.PointTemplates.Count>0 ).ToList();
+        var listOT = _context.Templates.Where(x => x.PointTemplates.Count>0 ).ToList();
 
-        var reslt =_mapper.Map<List<GetListOfTemplatesQueryVM>>(x);
+        var reslt =_mapper.Map<List<GetListOfTemplatesQueryVM>>(listOT);
 
         return reslt;
     }

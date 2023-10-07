@@ -12,7 +12,10 @@ using AutoMapper;
 namespace AARProject.Application.Queries;
 public class GetListOfTemplatesQueryVM : IMapFrom<Template>
 {
+    public Guid Id { get; set; }
     public string TemplateName { get; set; }
+    public string Description { get; set; }
+    public string CoverImage { get; set; }
     public void Mapping(Profile profile)
     {
         profile.CreateMap<Template, GetListOfTemplatesQueryVM>();

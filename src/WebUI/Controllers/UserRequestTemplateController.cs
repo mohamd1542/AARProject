@@ -14,6 +14,14 @@ public class UserRequestTemplateController : ApiControllerBase
         return Ok(user);
     }
 
+    [HttpGet("TemplatesFroUser")]
+    public async Task<ActionResult<GetlistforuserQueryVM>> GetListTforR(Guid query)
+    {
+        var listTforU = await Mediator.Send(new GetlistforuserQuery() { UserId = query });
+        return Ok(listTforU);
+    }
+
+
     [HttpPost]
     public async Task<ActionResult<Guid>> Create(CreateUserRequestTemplateCommand command)
     {

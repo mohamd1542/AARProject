@@ -14,4 +14,5 @@ public class Point : BaseAuditableEntity
     public IList<PointTemplate>? PointTemplates { get; set; } 
     public IList<UserRequestTemplate>? UserRequestTemplates { get; set; }
     public virtual User? User { get; set; }
+
 }

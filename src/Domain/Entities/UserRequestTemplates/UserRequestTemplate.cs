@@ -14,8 +14,8 @@ public class UserRequestTemplate : BaseAuditableEntity
     public string Description { get; set; }/// وصف 
     public Guid UserId { get; set; }
     public Guid TemplateId { get; set; } //list of template
-    public Guid PointId { get; set; }
-    public Guid SourceId { get; set; }
+    public Guid? PointId { get; set; }
+    public Guid? SourceId { get; set; }
     public Status RequestStatus { get; set; } //الحالة الافتراضية 
 
     public virtual User? User { get; set; }
