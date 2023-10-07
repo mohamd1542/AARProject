@@ -15,11 +15,8 @@ public class CreateUserRequestTemplateCommand : IRequest<Guid>, IMapFrom<UserReq
 {
     public Guid UserId { get; set; }
     public Guid TemplateId { get; set; }
-    public Guid PointId { get; set; }
-    public Guid SourceId { get; set; }
     public string File { get; set; }
     public string Description { get; set; }
-    public Status RequestStatus { get; set; }
     public IList<UploadedFileDto>? UploadedFiles { get; set; }
     public IList<UserRpointTemplateDto>? UserRpointTemplates { get; set; }
 
