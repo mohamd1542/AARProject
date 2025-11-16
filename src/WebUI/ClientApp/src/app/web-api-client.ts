@@ -498,6 +498,7 @@ export class PointClient implements IPointClient {
 export interface IPointTemplateClient {
     get(query: string | undefined): Observable<GetPointTemplateQueryVM>;
     create(command: CreatePointTemplateCommand): Observable<string>;
+    getPointinTemplate(templateId: string | undefined): Observable<GetPointInTemplateQueryVM>;
     update(id: string, command: UpdatePointTemplateCommand): Observable<FileResponse>;
     delete(id: string): Observable<FileResponse>;
 }
@@ -610,6 +611,58 @@ export class PointTemplateClient implements IPointTemplateClient {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
                 result200 = resultData200 !== undefined ? resultData200 : <any>null;
     
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    getPointinTemplate(templateId: string | undefined): Observable<GetPointInTemplateQueryVM> {
+        let url_ = this.baseUrl + "/api/PointTemplate/PointInTemplate?";
+        if (templateId === null)
+            throw new Error("The parameter 'templateId' cannot be null.");
+        else if (templateId !== undefined)
+            url_ += "TemplateId=" + encodeURIComponent("" + templateId) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetPointinTemplate(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetPointinTemplate(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<GetPointInTemplateQueryVM>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<GetPointInTemplateQueryVM>;
+        }));
+    }
+
+    protected processGetPointinTemplate(response: HttpResponseBase): Observable<GetPointInTemplateQueryVM> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = GetPointInTemplateQueryVM.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -1472,6 +1525,7 @@ export class SourceClient implements ISourceClient {
 export interface ITemplateClient {
     get(query: string | undefined): Observable<GetTemplateQueryVM>;
     create(command: CreateTemplateCommand): Observable<string>;
+    getListTemplate(): Observable<GetListOfTemplatesQueryVM>;
     update(id: string, command: UpdateTemplateCommand): Observable<FileResponse>;
     delete(id: string): Observable<FileResponse>;
 }
@@ -1584,6 +1638,54 @@ export class TemplateClient implements ITemplateClient {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
                 result200 = resultData200 !== undefined ? resultData200 : <any>null;
     
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    getListTemplate(): Observable<GetListOfTemplatesQueryVM> {
+        let url_ = this.baseUrl + "/api/Template/GetListTemplate";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetListTemplate(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetListTemplate(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<GetListOfTemplatesQueryVM>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<GetListOfTemplatesQueryVM>;
+        }));
+    }
+
+    protected processGetListTemplate(response: HttpResponseBase): Observable<GetListOfTemplatesQueryVM> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = GetListOfTemplatesQueryVM.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -3594,6 +3696,70 @@ export interface IGetPointTemplateQueryVM {
     userRpointTemplates?: UserRpointTemplateDto[] | undefined;
 }
 
+export class GetPointInTemplateQueryVM implements IGetPointInTemplateQueryVM {
+    seriesNumber?: number;
+    tmplateName?: string;
+    pointName?: string;
+    templateId?: string;
+    pointId?: string;
+    userRpointTemplates?: UserRpointTemplateDto[] | undefined;
+
+    constructor(data?: IGetPointInTemplateQueryVM) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.seriesNumber = _data["seriesNumber"];
+            this.tmplateName = _data["tmplateName"];
+            this.pointName = _data["pointName"];
+            this.templateId = _data["templateId"];
+            this.pointId = _data["pointId"];
+            if (Array.isArray(_data["userRpointTemplates"])) {
+                this.userRpointTemplates = [] as any;
+                for (let item of _data["userRpointTemplates"])
+                    this.userRpointTemplates!.push(UserRpointTemplateDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): GetPointInTemplateQueryVM {
+        data = typeof data === 'object' ? data : {};
+        let result = new GetPointInTemplateQueryVM();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["seriesNumber"] = this.seriesNumber;
+        data["tmplateName"] = this.tmplateName;
+        data["pointName"] = this.pointName;
+        data["templateId"] = this.templateId;
+        data["pointId"] = this.pointId;
+        if (Array.isArray(this.userRpointTemplates)) {
+            data["userRpointTemplates"] = [];
+            for (let item of this.userRpointTemplates)
+                data["userRpointTemplates"].push(item.toJSON());
+        }
+        return data;
+    }
+}
+
+export interface IGetPointInTemplateQueryVM {
+    seriesNumber?: number;
+    tmplateName?: string;
+    pointName?: string;
+    templateId?: string;
+    pointId?: string;
+    userRpointTemplates?: UserRpointTemplateDto[] | undefined;
+}
+
 export class CreatePointTemplateCommand implements ICreatePointTemplateCommand {
     templateId?: string;
     pointId?: string;
@@ -5228,6 +5394,42 @@ export interface IGetTemplateQueryVM {
     userRequestTemplates?: UserRequestTemplateDto[] | undefined;
 }
 
+export class GetListOfTemplatesQueryVM implements IGetListOfTemplatesQueryVM {
+    templateName?: string;
+
+    constructor(data?: IGetListOfTemplatesQueryVM) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.templateName = _data["templateName"];
+        }
+    }
+
+    static fromJS(data: any): GetListOfTemplatesQueryVM {
+        data = typeof data === 'object' ? data : {};
+        let result = new GetListOfTemplatesQueryVM();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["templateName"] = this.templateName;
+        return data;
+    }
+}
+
+export interface IGetListOfTemplatesQueryVM {
+    templateName?: string;
+}
+
 export class CreateTemplateCommand implements ICreateTemplateCommand {
     templateName!: string;
     description!: string;
@@ -5977,7 +6179,7 @@ export class CreateUserRequestTemplateCommand implements ICreateUserRequestTempl
     templateId?: string;
     pointId?: string;
     sourceId?: string;
-    file!: string;
+    file?: string;
     description!: string;
     requestStatus?: Status;
     uploadedFiles?: UploadedFileDto[] | undefined;
@@ -6049,7 +6251,7 @@ export interface ICreateUserRequestTemplateCommand {
     templateId?: string;
     pointId?: string;
     sourceId?: string;
-    file: string;
+    file?: string;
     description: string;
     requestStatus?: Status;
     uploadedFiles?: UploadedFileDto[] | undefined;

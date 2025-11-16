@@ -4,31 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AARProject.Domain.Entities;
-using IdentityModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AARProject.Infrastructure.Persistence.Configurations;
-public class CommentConfiguration : IEntityTypeConfiguration<Comment>
+namespace AARProject.Infrastructure.Persistence.Configurations
 {
-    public void Configure(EntityTypeBuilder<Comment> builder)
+    public class CommentConfiguration : IEntityTypeConfiguration<Comment>
     {
-        builder.ToTable("Comment");
-        builder.Property(e => e.CommentDate).HasColumnType("date");
-        builder.Property(e => e.Text).HasMaxLength(50);
-        builder.Property(e => e.UserRpointTemplateId).HasColumnName("UserRPointTemplateId");
+        public void Configure(EntityTypeBuilder<Comment> builder)
+        {
+            builder.ToTable("Comment");
 
-        //builder.HasOne(d => d.CommentNavigation).WithMany(p => p.InverseCommentNavigation)
-        //    .HasForeignKey(d => d.CommentId)
-        //    .HasConstraintName("FK_Comments_Comments");
+            builder.Property(e => e.CommentDate)
+                   .HasColumnType("date");
 
-        builder.HasOne(d => d.User).WithMany(p => p.Comments)
-            .HasForeignKey(d => d.UserId)
-            .HasConstraintName("FK_Comments_Users");
+            builder.Property(e => e.Text)
+                   .HasMaxLength(50);
 
-        builder.HasOne(d => d.UserRpointTemplate).WithMany(p => p.Comments)
-            .HasForeignKey(d => d.UserRpointTemplateId)
-            .HasConstraintName("FK_Comments_UserRPointTemplates");
+            builder.Property(e => e.UserRpointTemplateId)
+                   .HasColumnName("UserRPointTemplateId");
+
+            // لو بدك ترجع self reference بعدين:
+            //builder.HasOne(d => d.CommentNavigation)
+            //       .WithMany(p => p.InverseCommentNavigation)
+            //       .HasForeignKey(d => d.CommentNavigationId)
+            //       .HasConstraintName("FK_Comment_Comment_CommentNavigationId");
+
+            // العلاقة مع User – نوقف الـ Cascade هون
+            builder.HasOne(d => d.User)
+                   .WithMany(p => p.Comments)
+                   .HasForeignKey(d => d.UserId)
+                   .OnDelete(DeleteBehavior.NoAction)   // المهم هاد السطر
+                   .HasConstraintName("FK_Comments_Users");
+
+            // العلاقة مع UserRPointTemplate – عادي خليها زي ما هي (Cascade افتراضيًا لأنها Required)
+            builder.HasOne(d => d.UserRpointTemplate)
+                   .WithMany(p => p.Comments)
+                   .HasForeignKey(d => d.UserRpointTemplateId)
+                   .HasConstraintName("FK_Comments_UserRPointTemplates");
+        }
     }
 }
-

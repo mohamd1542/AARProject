@@ -344,6 +344,37 @@
         }
       }
     },
+    "/api/PointTemplate/PointInTemplate": {
+      "get": {
+        "tags": [
+          "PointTemplate"
+        ],
+        "operationId": "PointTemplate_GetPointinTemplate",
+        "parameters": [
+          {
+            "name": "TemplateId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPointInTemplateQueryVM"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/PointTemplate/{id}": {
       "put": {
         "tags": [
@@ -883,6 +914,26 @@
                 "schema": {
                   "type": "string",
                   "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Template/GetListTemplate": {
+      "get": {
+        "tags": [
+          "Template"
+        ],
+        "operationId": "Template_GetListTemplate",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetListOfTemplatesQueryVM"
                 }
               }
             }
@@ -1975,6 +2026,37 @@
           }
         }
       },
+      "GetPointInTemplateQueryVM": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "seriesNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tmplateName": {
+            "type": "string"
+          },
+          "pointName": {
+            "type": "string"
+          },
+          "templateId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "pointId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "userRpointTemplates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UserRpointTemplateDto"
+            }
+          }
+        }
+      },
       "CreatePointTemplateCommand": {
         "type": "object",
         "additionalProperties": false,
@@ -2938,6 +3020,15 @@
           }
         }
       },
+      "GetListOfTemplatesQueryVM": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "templateName": {
+            "type": "string"
+          }
+        }
+      },
       "CreateTemplateCommand": {
         "type": "object",
         "additionalProperties": false,
@@ -3329,7 +3420,6 @@
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "file",
           "description"
         ],
         "properties": {
@@ -3350,9 +3440,7 @@
             "format": "guid"
           },
           "file": {
-            "type": "string",
-            "minLength": 1,
-            "nullable": false
+            "type": "string"
           },
           "description": {
             "type": "string",

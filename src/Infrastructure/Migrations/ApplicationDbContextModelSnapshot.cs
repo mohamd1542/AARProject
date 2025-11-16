@@ -858,7 +858,7 @@ namespace AARProject.Infrastructure.Migrations
                     b.HasOne("AARProject.Domain.Entities.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired()
                         .HasConstraintName("FK_Comments_Users");
 
@@ -989,7 +989,7 @@ namespace AARProject.Infrastructure.Migrations
                     b.HasOne("AARProject.Domain.Entities.User", "User")
                         .WithMany("UserRequestTemplates")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired()
                         .HasConstraintName("FK_UserRequestTemplate_Users");
 
@@ -1035,7 +1035,7 @@ namespace AARProject.Infrastructure.Migrations
                     b.HasOne("AARProject.Domain.Entities.UserRequestTemplate", "UserRequestTemplate")
                         .WithMany("UserRpointTemplates")
                         .HasForeignKey("UserRequestTemplateId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired()
                         .HasConstraintName("FK_UserRPointTemplates_UserRequestTemplate");
 
