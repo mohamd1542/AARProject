@@ -4,6 +4,7 @@ using AARProject.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AARProject.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231006213744_updateURT")]
+    partial class updateURT
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -858,7 +861,7 @@ namespace AARProject.Infrastructure.Migrations
                     b.HasOne("AARProject.Domain.Entities.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_Comments_Users");
 
@@ -985,7 +988,7 @@ namespace AARProject.Infrastructure.Migrations
                     b.HasOne("AARProject.Domain.Entities.User", "User")
                         .WithMany("UserRequestTemplates")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_UserRequestTemplate_Users");
 
@@ -1031,7 +1034,7 @@ namespace AARProject.Infrastructure.Migrations
                     b.HasOne("AARProject.Domain.Entities.UserRequestTemplate", "UserRequestTemplate")
                         .WithMany("UserRpointTemplates")
                         .HasForeignKey("UserRequestTemplateId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_UserRPointTemplates_UserRequestTemplate");
 
